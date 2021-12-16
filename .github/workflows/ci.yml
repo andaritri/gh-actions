@@ -17,6 +17,9 @@ jobs:
         run: |
           chmod +x hello.py
           ./hello.py
+      - name: Check Docker version
+        run: |
+          docker version
       - run: echo "💡 The ${{ github.repository }} repository has been cloned to the runner."
       - run: echo "🖥️ The workflow is now ready to test your code on the runner."
       - name: List files in the repository
