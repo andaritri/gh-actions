@@ -12,6 +12,16 @@ jobs:
   job-from-gh-actions-repo:
     runs-on: ubuntu-latest
     steps:
+      - name: set variables
+        id: variables
+        shell: bash
+        run: |
+          if [ ${inputs.caller_id} == "andres" ] then;
+            echo "::set-output name=NAME::ANDRES"
+          else
+            echo "::set-output name=NAME::UNKNOWN"
+            
+          fi
       - run: echo "🎉 The job was automatically triggered by a ${{ github.event_name }} event."
       - run: echo "🐧 This job is now running on a ${{ runner.os }} server hosted by GitHub!"
       - run: echo "🔎 The name of your branch is ${{ github.ref }} and your repository is ${{ github.repository }}."
@@ -19,7 +29,7 @@ jobs:
         uses: actions/checkout@v2
       - name: Execute python scripts
         env:
-          CALLER: ${{ (inputs.caller_id == 'andres' && 'I am Andres!') ||  'I am another person'}}
+          CALLER: ${{ (steps.variables.outputs.NAME == 'ANDRES' && 'I am Andres!') ||  'I am another person' }}
         working-directory: ./scripts
         run: |
           chmod +x hello.py
