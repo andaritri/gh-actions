@@ -16,7 +16,7 @@ jobs:
         id: variables
         shell: bash
         run: |
-          if [ ${inputs.caller_id} == "andres" ] then;
+          if [ ${inputs.caller_id} == "andres" ]; then
             echo "::set-output name=NAME::ANDRES"
           else
             echo "::set-output name=NAME::UNKNOWN"
