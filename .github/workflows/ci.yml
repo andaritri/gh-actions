@@ -2,6 +2,11 @@ name: Reusable GH workflow
 
 on:
  workflow_call:
+  inputs:
+    caller_id:
+      default: 'andres'
+      required: false
+      type: string
 
 jobs:
   job-from-gh-actions-repo:
@@ -13,10 +18,13 @@ jobs:
       - name: Check out repository code
         uses: actions/checkout@v2
       - name: Execute python scripts
+        env:
+          CALLER: ${{ (inputs.caller_id == 'andres' && 'I am Andres!') ||  'I am another person'}}
         working-directory: ./scripts
         run: |
           chmod +x hello.py
           ./hello.py
+          echo $CALLER
       - name: Check Docker version
         run: |
           docker version
