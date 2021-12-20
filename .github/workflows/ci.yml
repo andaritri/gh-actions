@@ -7,6 +7,12 @@ on:
       default: 'andres'
       required: false
       type: string
+  secrets:
+    DEV_PROJECT:
+      required: false
+    STG_PROJECT:
+     required: false
+       
 
 jobs:
   job-from-gh-actions-repo:
@@ -17,9 +23,9 @@ jobs:
         shell: bash
         run: |
           if [[ "${{inputs.caller_id}}" == "andres" ]]; then
-            echo "::set-output name=NAME::ANDRES"
+            echo "::set-output name=ENV::stg"
           else
-            echo "::set-output name=NAME::UNKNOWN"
+            echo "::set-output name=ENV::dev"
             
           fi
       - run: echo "🎉 The job was automatically triggered by a ${{ github.event_name }} event."
@@ -29,7 +35,7 @@ jobs:
         uses: actions/checkout@v2
       - name: Execute python scripts
         env:
-          CALLER: ${{ (steps.variables.outputs.NAME == 'ANDRES' && inputs.caller_id) ||  'I am another person' }}
+          CALLER: ${{ (steps.variables.outputs.ENV == 'dev' && secrets.DEV_PROJECT) || secrets.STG_PROJECT }}
         working-directory: ./scripts
         run: |
           chmod +x hello.py
