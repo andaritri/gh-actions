@@ -7,11 +7,11 @@ on:
       default: 'andres'
       required: false
       type: string
-  secrets:
-    DEV_PROJECT:
-      required: false
-    STG_PROJECT:
-     required: false
+#  secrets:
+#    DEV_PROJECT:
+#      required: false
+#    STG_PROJECT:
+#     required: false
        
 
 jobs:
