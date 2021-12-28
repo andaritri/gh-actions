@@ -34,8 +34,8 @@ jobs:
       - name: Set variable
         id: set
         run: |
-         chmod +x ./.workflows/scripts/set_variables.sh
-         ./.workflows/scripts/set_variables.sh
+         chmod +x .github/scripts/set_variables.sh
+         ./.github/scripts/set_variables.sh
       - run: echo ${{ steps.set.outputs.output }}
       - name: Check out repository code
         uses: actions/checkout@v2
