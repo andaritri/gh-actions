@@ -34,6 +34,7 @@ jobs:
       - name: Set variable
         id: set
         run: |
+         pwd
          chmod +x .github/scripts/set_variables.sh
          ./.github/scripts/set_variables.sh
       - run: echo ${{ steps.set.outputs.output }}
