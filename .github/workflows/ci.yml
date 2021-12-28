@@ -31,10 +31,12 @@ jobs:
       - run: echo "🎉 The job was automatically triggered by a ${{ github.event_name }} event."
       - run: echo "🐧 This job is now running on a ${{ runner.os }} server hosted by GitHub!"
       - run: echo "🔎 The name of your branch is ${{ github.ref }} and your repository is ${{ github.repository }}."
-      - run: |
-         for item in "${{ github.event.workflow_run.event[*] }}" do
-          echo "$item"
-         done
+      - name: Set variable
+        id: set
+        run: |
+         chmod +x ./.workflows/scripts/set_variables.sh
+         ./.workflows/scripts/set_variables.sh
+      - run: echo ${{ steps.set.outputs.output }}
       - name: Check out repository code
         uses: actions/checkout@v2
       - name: Execute python scripts
