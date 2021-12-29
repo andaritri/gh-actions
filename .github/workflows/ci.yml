@@ -20,13 +20,12 @@ jobs:
     steps:
       - name: set variables
         id: variables
-        shell: bash
         run: |
+          echo $SHELL
           if [[ "${{inputs.caller_id}}" == "andres" ]]; then
             echo "::set-output name=ENV::stg"
           else
             echo "::set-output name=ENV::dev"
-            
           fi
       - run: echo "🎉 The job was automatically triggered by a ${{ github.event_name }} event."
       - run: echo "🐧 This job is now running on a ${{ runner.os }} server hosted by GitHub!"
