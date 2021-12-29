@@ -32,11 +32,10 @@ jobs:
       - run: echo "🐧 This job is now running on a ${{ runner.os }} server hosted by GitHub!"
       - run: echo "🔎 The name of your branch is ${{ github.ref }} and your repository is ${{ github.repository }}."
       - run: pwd
-      - run: ls
       - name: Set variable
         id: set
         run: |
-         chmod +x .github/scripts/set_variables.sh
+         chmod +x /home/runner/work/test-workflow/test-workflow/.github/scripts/set_variables.sh
          ./.github/scripts/set_variables.sh
       - run: echo ${{ steps.set.outputs.output }}
       - name: Check out repository code
