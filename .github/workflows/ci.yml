@@ -39,7 +39,7 @@ jobs:
          chmod +x .github/scripts/set_variables.sh
          ./.github/scripts/set_variables.sh
         env:
-          GITHUB_ACTOR: ${{ GITHUB_ACTOR }}
+          GITHUB: ${{ GITHUB_REPOSITORY }}
       - run: echo ${{ steps.set.outputs.output }}
       - name: Execute python scripts
         env:
