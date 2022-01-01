@@ -55,7 +55,7 @@ jobs:
         with:
           id: 4
       - name: show json reponse
-        run: echo ${{ steps.get.outputs.json }}
+        run: echo "json response -> ${{ steps.get.outputs.json }}"
       - name: Check Docker version
         run: |
           docker version
