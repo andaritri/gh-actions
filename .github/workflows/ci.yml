@@ -52,8 +52,7 @@ jobs:
       - name: Use Custom github action
         uses: andaritri/action-test@main
         with:
-          one: "Hello"
-          second: "World!"
+          id: 4
       - name: Check Docker version
         run: |
           docker version
