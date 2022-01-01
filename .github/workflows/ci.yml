@@ -50,9 +50,12 @@ jobs:
       - name: List python package
         run: pip list
       - name: Use Custom github action
+        id: get
         uses: andaritri/action-test@main
         with:
           id: 4
+      - name: show json reponse
+        run: echo ${{ steps.get.outputs.json }}
       - name: Check Docker version
         run: |
           docker version
