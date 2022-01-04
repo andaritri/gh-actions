@@ -36,6 +36,7 @@ jobs:
         run: |
          chmod +x .github/scripts/set_variables.sh
          ./.github/scripts/set_variables.sh
+         echo "::set-output name=SHOW::testing output in composite actions"
         env:
           REPOSITORY: ${{ github.repository }}
       - run: echo ${{ steps.set.outputs.output }}
