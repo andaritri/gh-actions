@@ -29,9 +29,9 @@ jobs:
         run: |
           echo $SHELL
           if [[ "${{inputs.caller_id}}" == "andres" ]]; then
-            echo "::set-output name=ENV::stg-${{ JOB_ENV }}"
+            echo "::set-output name=ENV::stg-${{ env.JOB_ENV }}"
           else
-            echo "::set-output name=ENV::dev-${{ JOB_ENV }}"
+            echo "::set-output name=ENV::dev-${{ env.JOB_ENV }}"
           fi
       - run: echo "🎉 The job was automatically triggered by a ${{ github.event_name }} event."
       - run: echo "🔎 The name of your branch is ${{ github.ref }} and your repository is ${{ github.repository }}."
