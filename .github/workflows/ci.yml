@@ -48,6 +48,7 @@ jobs:
           chmod +x hello.py
           ./hello.py
           echo $CALLER
+          echo $TEXT
       - name: List python package
         run: pip list
       - name: Use Custom github action
