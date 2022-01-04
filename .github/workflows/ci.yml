@@ -12,11 +12,17 @@ on:
       required: false
     STG_PROJECT:
      required: false
+
+
+env:
+ ENV_ROOT: 'Root environment variable'
        
 
 jobs:
   job-from-gh-actions-repo:
     runs-on: ubuntu-latest
+    env:
+      ENV_JOB: 'Enviroment variable inside job'
     steps:
       - name: set variables
         id: variables
