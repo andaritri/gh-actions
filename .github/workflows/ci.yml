@@ -42,6 +42,7 @@ jobs:
       - name: Execute python scripts
         env:
           CALLER: ${{ (steps.variables.outputs.ENV == 'dev' && secrets.DEV_PROJECT) || secrets.STG_PROJECT }}
+          TEXT: 'This a text to show'
         working-directory: ./scripts
         run: |
           chmod +x hello.py
