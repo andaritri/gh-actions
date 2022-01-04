@@ -15,14 +15,14 @@ on:
 
 
 env:
- ENV_ROOT: 'Root environment variable'
+ ROOT_ENV: 'Root environment variable'
        
 
 jobs:
   job-from-gh-actions-repo:
     runs-on: ubuntu-latest
     env:
-      ENV_JOB: 'Enviroment variable inside job'
+      JOB_ENV: 'Enviroment variable inside job'
     steps:
       - name: set variables
         id: variables
