@@ -29,9 +29,9 @@ jobs:
         run: |
           echo $SHELL
           if [[ "${{inputs.caller_id}}" == "andres" ]]; then
-            echo "::set-output name=ENV::stg"
+            echo "::set-output name=ENV::stg-${{ JOB_ENV }}"
           else
-            echo "::set-output name=ENV::dev"
+            echo "::set-output name=ENV::dev-${{ JOB_ENV }}"
           fi
       - run: echo "🎉 The job was automatically triggered by a ${{ github.event_name }} event."
       - run: echo "🔎 The name of your branch is ${{ github.ref }} and your repository is ${{ github.repository }}."
@@ -65,6 +65,8 @@ jobs:
           id: 4
       - name: show json reponse
         run: echo "json response -> ${{ steps.get.outputs.json }}"
+      - name: show set variables
+        run: echo "${{ steps.variables.outputs.ENV }}"
       - name: show output from main wokflow
         run: echo "Show -> ${{ steps.set.outputs.SHOW }}"
       - name: Check Docker version
