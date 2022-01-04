@@ -59,6 +59,8 @@ jobs:
           id: 4
       - name: show json reponse
         run: echo "json response -> ${{ steps.get.outputs.json }}"
+      - name: show output from main wokflow
+        run: echo "Show -> ${{ steps.set.outputs.SHOW }}"
       - name: Check Docker version
         run: |
           docker version
