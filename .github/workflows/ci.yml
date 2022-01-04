@@ -42,16 +42,16 @@ jobs:
       - name: Execute python scripts
         env:
           CALLER: ${{ (steps.variables.outputs.ENV == 'dev' && secrets.DEV_PROJECT) || secrets.STG_PROJECT }}
-          TEXT: 'This a text to show'
         working-directory: ./scripts
         run: |
           chmod +x hello.py
           ./hello.py
           echo $CALLER
-          echo $TEXT
       - name: List python package
         run: pip list
       - name: Use Custom github action
+        env:
+          TEXT: 'This a text to show'
         id: get
         uses: andaritri/action-test@main
         with:
