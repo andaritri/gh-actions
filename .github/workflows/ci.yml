@@ -60,7 +60,7 @@ jobs:
         env:
           TEXT: 'This a text to show'
         id: get
-        uses: andaritri/action-test@main
+        uses: andaritri/action-test/actions/workflow-test@main
         with:
           id: 4
       - name: show json reponse
