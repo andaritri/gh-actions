@@ -24,6 +24,13 @@ jobs:
     env:
       JOB_ENV: 'Enviroment variable inside job'
     steps:
+      - name: Setup Variables (Branch)
+        env:
+          GIT_BRANCH: ${{ github.event.workflow_run.head_branch }}
+        id: vars
+        shell: bash
+        run: |
+          echo "BRANCH ---->>>> ${GIT_BRANCH}"
       - name: set variables
         id: variables
         run: |
