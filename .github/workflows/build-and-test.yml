@@ -1,0 +1,15 @@
+name: Buil-and-Test Reausable Workflow
+
+on:
+  workflow_call
+
+jobs:
+  job-test:
+    name: Testing caller workflow
+    runs-on: ubuntu-latest
+    steps:
+      - name: Expose Information
+        shell: bash
+        run: |
+          echo "Running Buid and Test reusable job"
+  
