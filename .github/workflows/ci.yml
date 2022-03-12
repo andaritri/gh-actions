@@ -31,6 +31,7 @@ jobs:
         shell: bash
         run: |
           echo "BRANCH ---->>>> ${GIT_BRANCH}"
+          echo "TAG ------->>>> ${GIT_BRANCH#refs/tags/}"
       - name: set variables
         id: variables
         run: |
