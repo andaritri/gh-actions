@@ -33,7 +33,7 @@ jobs:
           echo "BRANCH ---->>>> ${GIT_BRANCH}"
           echo "TAG ------->>>> ${GIT_BRANCH#refs/tags/}"
       - name: testing array
-        if: contains(fromJson('["andres", "foo", "bar"]'), inputs.caller_id)
+        if: contains(fromJson('["andre", "foo", "bar"]'), inputs.caller_id)
         run: |
           echo "Caller_id is in the array"
       - name: set variables
