@@ -32,6 +32,9 @@ jobs:
         run: |
           echo "BRANCH ---->>>> ${GIT_BRANCH}"
           echo "TAG ------->>>> ${GIT_BRANCH#refs/tags/}"
+          echo "git sha: ${{ github.event.workflow_run.head_sha }}"
+          echo "another sha: ${{ github.sha }}"
+          echo "${{ github.event.workflow_run.head_commit.message }}"
       - name: testing array
         if: contains(fromJson('["andre", "foo", "bar"]'), inputs.caller_id)
         run: |
