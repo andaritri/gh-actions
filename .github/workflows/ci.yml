@@ -30,8 +30,10 @@ jobs:
         id: vars
         shell: bash
         run: |
+          BRANCH=$(echo ${GIT_BRANCH#refs/heads/} | sed 's/\//-/g;s/_/-/g;s/\./-/g;s/dependabot/dbot/g;' | tr '[:upper:]' '[:lower:]' | cut -c -63 | sed 's/^-//g;s/-$//g;')
           echo "BRANCH ---->>>> ${GIT_BRANCH}"
           echo "TAG ------->>>> ${GIT_BRANCH#refs/tags/}"
+          echo "Branch with sed command ---> ${BRANCH}"
           echo "git sha: ${{ github.event.workflow_run.head_sha }}"
           echo "another sha: ${{ github.sha }}"
           echo "${{ github.event.workflow_run.head_commit.message }}"
