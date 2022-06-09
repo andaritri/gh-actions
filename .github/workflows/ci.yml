@@ -37,6 +37,8 @@ jobs:
           echo "git sha: ${{ github.event.workflow_run.head_sha }}"
           echo "another sha: ${{ github.sha }}"
           echo "${{ github.event.workflow_run.head_commit.message }}"
+      - name: ---- print environment variables (runner) ---
+        run: printenv
       - name: testing array
         if: contains(fromJson('["andre", "foo", "bar"]'), inputs.caller_id)
         run: |
